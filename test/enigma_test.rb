@@ -17,7 +17,4 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 
-  def test_decrypt_returns_correctly
-    
-  end
 end
