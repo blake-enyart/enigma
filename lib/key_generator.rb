@@ -1,0 +1,2 @@
+class KeyGenerator
+end
