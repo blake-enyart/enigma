@@ -50,12 +50,12 @@ class ShiftTest < Minitest::Test
   end
 
   def test_shift_defaults_to_5_digit_random_number_for_key_master
-    
+
     assert_equal 5, Shift.new.key_master.length
   end
 
-  def test_attr_return_correctly
-    skip
+  def test_shift_letters_return_correctly
+
     assert_equal 3, @shift.a_shift
     assert_equal 27, @shift.b_shift
     assert_equal 73, @shift.c_shift
