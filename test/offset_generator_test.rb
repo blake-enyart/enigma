@@ -3,6 +3,8 @@ require './test/test_helper'
 class OffsetGeneratorTest < Minitest::Test
 
   def setup
+    @enigma = Enigma.new
+    
     @offset_generator = OffsetGenerator.new
   end
 
