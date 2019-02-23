@@ -10,3 +10,4 @@ class CipherMakerTest < Minitest::Test
 
     assert_instance_of CipherMaker, @cipher_maker
   end
+end

@@ -1,0 +1,2 @@
+class CipherMaker
+end
