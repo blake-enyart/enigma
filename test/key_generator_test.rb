@@ -22,4 +22,12 @@ class KeyGeneratorTest < Minitest::Test
 
     assert_equal expected, @key_gen.key_maker('01234')
   end
+
+  def test_key_maker_output_assigned_to_correct_keys
+
+    assert_equal '01', KeyGenerator.new('01234').a_key
+    assert_equal '12', KeyGenerator.new('01234').b_key
+    assert_equal '23', KeyGenerator.new('01234').c_key
+    assert_equal '34', KeyGenerator.new('01234').d_key
+  end
 end

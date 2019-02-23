@@ -4,6 +4,7 @@ class KeyGenerator
 
   def initialize(key=sampler())
     @key = key
+
   end
 
   def sampler
