@@ -1,4 +1,4 @@
-class KeyGenerator
+module KeyGenerator
 
   attr_reader :key, :a_key, :b_key, :c_key, :d_key
 
@@ -10,12 +10,6 @@ class KeyGenerator
     @b_key = key_array[1]
     @c_key = key_array[2]
     @d_key = key_array[3]
-  end
-
-  def sampler
-    key_array = [*00001..99999]
-    key_master = key_array.sample
-    key_master = "%05d" % key_master
   end
 
   def key_maker(key_master)

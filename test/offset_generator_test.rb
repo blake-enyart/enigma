@@ -12,8 +12,8 @@ class OffsetGeneratorTest < Minitest::Test
   end
 
   def test_offset_assigns_each_offset_correctly
-    skip
-    offset_generator = OffsetGenerator.new('040895')
+    enigma = Enigma.new(offset_master: '040895')
+    @shift.assign_offset_keys(@shift.offset_master)
 
     assert_equal '1', offset_generator.a_offset
     assert_equal '0', offset_generator.b_offset

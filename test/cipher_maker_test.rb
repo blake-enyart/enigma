@@ -3,7 +3,10 @@ require './test/test_helper'
 class CipherMakerTest < Minitest::Test
 
   def setup
-    @cipher_maker = CipherMaker.new
+    @enigma = Enigma.new
+    # @enigma.encrypt("hello world", "02715", "040895")
+
+    @cipher_maker = CipherMaker.new()
   end
 
   def test_it_exist
