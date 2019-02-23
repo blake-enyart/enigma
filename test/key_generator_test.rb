@@ -30,4 +30,12 @@ class KeyGeneratorTest < Minitest::Test
     assert_equal '23', KeyGenerator.new('01234').c_key
     assert_equal '34', KeyGenerator.new('01234').d_key
   end
+
+  def test_creation_of_key_generator_object_generates_random_key
+
+    assert_equal 2, @key_gen.a_key.length
+    assert_equal 2, @key_gen.b_key.length
+    assert_equal 2, @key_gen.c_key.length
+    assert_equal 2, @key_gen.d_key.length
+  end
 end

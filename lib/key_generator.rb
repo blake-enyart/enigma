@@ -1,10 +1,15 @@
 class KeyGenerator
 
-  attr_reader :key
+  attr_reader :key, :a_key, :b_key, :c_key, :d_key
 
   def initialize(key=sampler())
     @key = key
 
+    key_array = key_maker(@key)
+    @a_key = key_array[0]
+    @b_key = key_array[1]
+    @c_key = key_array[2]
+    @d_key = key_array[3]
   end
 
   def sampler
