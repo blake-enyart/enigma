@@ -32,4 +32,12 @@ class OffsetGeneratorTest < Minitest::Test
 
     assert_equal expected, @offset_generator.date
   end
+
+  def test_offset_assigns_each_offset_correctly
+
+    assert_equal '1', @offset_generator.a_offset
+    assert_equal '0', @offset_generator.b_offset
+    assert_equal '2', @offset_generator.c_offset
+    assert_equal '5', @offset_generator.d_offset
+  end
 end
