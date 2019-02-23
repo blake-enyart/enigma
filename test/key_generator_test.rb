@@ -14,7 +14,7 @@ class KeyGeneratorTest < Minitest::Test
 
   def test_sampler_returns_5_element_key_generator
 
-    assert_equal 5, @key_gen.sampler
+    assert_equal 5, @key_gen.sampler.chars.count
   end
 
   def test_key_maker_converts_key_choice_to_keys

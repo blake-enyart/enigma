@@ -8,12 +8,15 @@ class KeyGenerator
 
   def sampler
     key_array = [*00001..10000]
-    choice = key_array.sample
-    choice = "%05d" % choice
+    key_master = key_array.sample
+    key_master = "%05d" % key_master
+  end
+
+  def key_maker(key_master)
     choice_array = []
-    choice.chars.each_with_index do |number, index|
-      if choice[index+1] != nil
-        choice_array << number + choice[index+1]
+    key_master.chars.each_with_index do |number, index|
+      if key_master[index+1] != nil
+        choice_array << number + key_master[index+1]
       end
     end
     choice_array
