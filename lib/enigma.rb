@@ -8,7 +8,7 @@ class Enigma
     @key_master = key_master
     @offset_master = offset_master
     @message = nil
-    Shift.new(key_master: key_master, offset_master: offset_master)
+    @cipher = Shift.new(key_master: key_master, offset_master: offset_master)
   end
 
   def encrypt(message, key_master=@key_master, offset_master=@offset_master)
@@ -22,4 +22,7 @@ class Enigma
     key_master = key_array.sample
     key_master = "%05d" % key_master
   end
+
+  #Encrypt module
+  
 end

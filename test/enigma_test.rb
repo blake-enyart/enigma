@@ -11,17 +11,24 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, @enigma
   end
 
-  def test_attr_are_nil
+  def test_attr_return_correctly
 
     assert_nil @enigma.message
-    assert_nil @enigma.key_master
-    assert_nil @enigma.offset_master
+
+    expected = Date.today.strftime('%d%m%y')
+
+    assert_equal expected, @enigma.offset_master
+    assert_equal 5, @enigma.key_master.length
   end
 
-  def test_attr_change_with_encrypt_method
+  def test_me_change_with_encrypt_method
+
     assert_nil @enigma.message
-    assert_nil @enigma.key_master
-    assert_nil @enigma.offset_master
+
+    expected = Date.today.strftime('%d%m%y')
+
+    assert_equal expected, @enigma.offset_master
+    assert_equal 5, @enigma.key_master.length
 
     @enigma.encrypt("hello world", "02715", "040895")
 
