@@ -34,10 +34,11 @@ class OffsetGeneratorTest < Minitest::Test
   end
 
   def test_offset_assigns_each_offset_correctly
+    offset_generator = OffsetGenerator.new('040895')
 
-    assert_equal '1', @offset_generator.a_offset
-    assert_equal '0', @offset_generator.b_offset
-    assert_equal '2', @offset_generator.c_offset
-    assert_equal '5', @offset_generator.d_offset
+    assert_equal '1', offset_generator.a_offset
+    assert_equal '0', offset_generator.b_offset
+    assert_equal '2', offset_generator.c_offset
+    assert_equal '5', offset_generator.d_offset
   end
 end
