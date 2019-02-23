@@ -26,4 +26,10 @@ class OffsetGeneratorTest < Minitest::Test
 
     assert_equal '1025', @offset_generator.offset_master('040895')
   end
+
+  def test_offset_generator_defaults_to_today
+    expected = Date.today.strftime('%d%m%y')
+
+    assert_equal expected, @offset_generator.date
+  end
 end
