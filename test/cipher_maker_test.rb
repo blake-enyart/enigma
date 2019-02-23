@@ -10,4 +10,15 @@ class CipherMakerTest < Minitest::Test
 
     assert_instance_of CipherMaker, @cipher_maker
   end
+
+  def test_attr_return_correctly
+    expected = OffsetGenerator.new('040895')
+
+    assert_equal expected, @cipher_maker.offsets
+
+    expected = KeyGenerator.new('02715')
+
+    assert_equal expected, @cipher_maker.keys
+    assert_equal 'hello_world', @cipher_maker.message
+  end
 end
