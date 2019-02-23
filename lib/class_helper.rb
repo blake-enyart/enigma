@@ -3,6 +3,6 @@ require 'date'
 #modules
 require './lib/offset_generator'
 require './lib/key_generator'
-#classes
+#classes in inheritance order
 require './lib/enigma'
 require './lib/shift'
