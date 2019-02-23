@@ -13,12 +13,17 @@ class OffsetGeneratorTest < Minitest::Test
 
   def test_date_stores_correctly
 
-    assert_equal '020419', OffsetGenerator.new('020419').date
+    assert_equal '040895', OffsetGenerator.new('040895').date
   end
 
   def test_defaults_to_today_stored_correctly
 
     assert_equal 6, @offset_generator.date.length
     assert_instance_of String, @offset_generator.date
+  end
+
+  def test_offset_master_generates_correctly
+
+    assert_equal '1025', @offset_generator.offset_master('040895')
   end
 end
