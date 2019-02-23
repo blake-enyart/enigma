@@ -21,8 +21,9 @@ class Shift < Enigma
     @b_key = nil
     @c_key = nil
     @d_key = nil
-    @key_master = key_master
-    @offset_master = offset_master
+    assign_key_letters(key_master)
+    assign_offset_letters(offset_master)
+    assign_shift_letters
   end
 
   def offset_master_converter(offset_master=@offset_master)
@@ -31,6 +32,7 @@ class Shift < Enigma
   end
 
   def assign_offset_letters(offset_master)
+    offset_master = offset_master_converter(offset_master)
     @a_offset = offset_master[0]
     @b_offset = offset_master[1]
     @c_offset = offset_master[2]
