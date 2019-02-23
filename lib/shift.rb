@@ -54,4 +54,11 @@ class Shift < Enigma
     @c_key = key_array[2]
     @d_key = key_array[3]
   end
+
+  def assign_shift_letters
+    @a_shift = @a_key.to_i + @a_offset.to_i
+    @b_shift = @b_key.to_i + @b_offset.to_i
+    @c_shift = @c_key.to_i + @c_offset.to_i
+    @d_shift = @d_key.to_i + @d_offset.to_i
+  end
 end
