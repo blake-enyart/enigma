@@ -49,6 +49,11 @@ class ShiftTest < Minitest::Test
     assert_equal '15', @shift.d_key
   end
 
+  def test_shift_defaults_to_5_digit_random_number_for_key_master
+    
+    assert_equal 5, Shift.new.key_master.length
+  end
+
   def test_attr_return_correctly
     skip
     assert_equal 3, @shift.a_shift
