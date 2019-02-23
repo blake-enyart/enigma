@@ -5,17 +5,16 @@ class OffsetGeneratorTest < Minitest::Test
   def setup
     @shift = Shift.new
   end
-  
+
   def test_offset_master_converter_generates_correctly
 
     assert_equal '1025', @shift.offset_master_converter('040895')
   end
 
-  def test_offset_generator_defaults_to_today
-    skip
+  def test_offset_master_converter_defaults_to_today
     expected = Date.today.strftime('%d%m%y')
 
-    assert_equal expected, @offset_generator.date
+    assert_equal expected, @shift.date
   end
 
   def test_offset_assigns_each_offset_correctly
