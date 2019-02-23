@@ -13,7 +13,7 @@ class KeyGenerator
   end
 
   def sampler
-    key_array = [*00001..10000]
+    key_array = [*00001..99999]
     key_master = key_array.sample
     key_master = "%05d" % key_master
   end

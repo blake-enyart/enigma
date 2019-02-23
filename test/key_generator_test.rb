@@ -3,7 +3,6 @@ require './test/test_helper'
 class KeyGeneratorTest < Minitest::Test
 
   def setup
-    @enigma = Enigma.new
     @key_gen = KeyGenerator.new
   end
 
