@@ -26,7 +26,7 @@ class ShiftTest < Minitest::Test
   end
 
   def test_offset_assigns_each_offset_correctly
-    @shift.assign_offset_keys('1025')
+    @shift.assign_offset_letters('1025')
 
     assert_equal '1', @shift.a_offset
     assert_equal '0', @shift.b_offset
@@ -38,6 +38,15 @@ class ShiftTest < Minitest::Test
     expected = ['02', '27', '71', '15']
 
     assert_equal expected, @shift.key_maker('02715')
+  end
+
+  def test_assign_key_letters_functions_correctly
+    @shift.assign_key_letters('02715')
+
+    assert_equal '02', @shift.a_key
+    assert_equal '27', @shift.b_key
+    assert_equal '71', @shift.c_key
+    assert_equal '15', @shift.d_key
   end
 
   def test_attr_return_correctly
