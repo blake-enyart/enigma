@@ -14,6 +14,12 @@ class ShiftTest < Minitest::Test
     assert_instance_of Shift, @shift
   end
 
+  def test_shift_defaults_to_today_for_offset
+    expected = Date.today.strftime('%d%m%y')
+
+    assert_equal expected, @shift.offset_master
+  end
+  
   def test_attr_return_correctly
 
     assert_equal 3, @shift.a_shift
