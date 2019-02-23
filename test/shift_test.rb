@@ -55,7 +55,8 @@ class ShiftTest < Minitest::Test
   end
 
   def test_shift_letters_return_correctly
-
+    @shift.assign_shift_letters
+    
     assert_equal 3, @shift.a_shift
     assert_equal 27, @shift.b_shift
     assert_equal 73, @shift.c_shift
