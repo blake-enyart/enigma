@@ -13,15 +13,15 @@ class EnigmaTest < Minitest::Test
 
   def test_attr_are_nil
 
-    assert_equal nil, @enigma.message
-    assert_equal nil, @enigma.key_master
-    assert_equal nil, @enigma.offset_master
+    assert_nil @enigma.message
+    assert_nil @enigma.key_master
+    assert_nil @enigma.offset_master
   end
 
   def test_attr_change_with_encrypt_method
-    assert_equal nil, @enigma.message
-    assert_equal nil, @enigma.key_master
-    assert_equal nil, @enigma.offset_master
+    assert_nil @enigma.message
+    assert_nil @enigma.key_master
+    assert_nil @enigma.offset_master
 
     @enigma.encrypt("hello world", "02715", "040895")
 
