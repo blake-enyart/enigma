@@ -64,4 +64,26 @@ class Enigma
     file.close
     file_location = './data/' + file_name
   end
+
+  def command_decrypt(input=ARGV)
+    encrypted_file = read_in_file(input)
+    decrypt_file(encrypted_file, input)
+    p "Created '#{input[1]}' with the key #{input[2]} and date #{input[3]}"
+  end
+
+  def decrypt_file(encrypted_file, input)
+    key = sampler()
+    key = input[2]; date = input[3] if input.length > 2
+    file_name = input[1]
+    decryption_file_path = create_file(file_name)
+    encrypted_file.each do |line|
+      decrypt_line(line, decryption_file_path, key, date)
+    end
+  end
+
+  def decrypt_line(line, decryption_file_path, key, date)
+    encryption_file = File.open(decryption_file_path, 'a')
+    encryption_file.puts(decrypt(line, key, date)[:decryption])
+    encryption_file.close
+  end
 end
