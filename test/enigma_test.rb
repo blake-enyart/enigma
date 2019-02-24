@@ -16,13 +16,8 @@ class EnigmaTest < Minitest::Test
     assert_nil @enigma.message
     assert_nil @enigma.encryption
   end
-  
-  def test_sampler_returns_5_digit_string_in_range
-    choices = [*00001..99999]
-    choices = choices.map { |number| "%05d" % number }
 
-    assert_equal true, choices.include?(@enigma.sampler)
-  end
+
 
   def test_message_ivar_change_with_encrypt_method
 
@@ -38,13 +33,6 @@ class EnigmaTest < Minitest::Test
     enigma.encrypt("hello world", "02715", "040895")
 
     assert_equal "keder ohulw", enigma.encryption
-  end
-
-  def test_cipher_shift_returns_correctly
-    enigma = Enigma.new
-    cipher = Shift.new(key_master: "02715", offset_master: "040895").shift_master
-
-    assert_equal "keder ohulw", enigma.cipher_shift("hello world", cipher)
   end
 
   def test_encrypt_returns_correctly

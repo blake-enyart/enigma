@@ -4,7 +4,7 @@ class Enigma
 
   include EncryptDecrypt
 
-  attr_reader :message, :encryption, :decryption
+  attr_reader :message, :encryption, :decryption, :rotator
 
   def initialize
     @message = nil
