@@ -91,4 +91,15 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.decrypt("keder ohulw")[:date]
     assert_equal 5, @enigma.decrypt("keder ohulw")[:key].length
   end
+
+  def test_cipher_shift_returns_special_characters_untouched
+
+    assert_equal '@!:', @enigma.encrypt('@!:')[:encryption]
+    assert_equal 'keder ohulw!', @enigma.encrypt('hello world!', "02715", "040895" )[:encryption]
+  end
+
+  def test_encrypt_handles_uppercase_letters_correctly
+
+    assert_equal 'keder ohulw!', @enigma.encrypt('HELLO WORLD!', "02715", "040895" )[:encryption]
+  end
 end

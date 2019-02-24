@@ -2,7 +2,7 @@ require './lib/class_helper'
 
 class Enigma
 
-  attr_reader :message, :key_master, :offset_master, :cipher, :encryption
+  attr_reader :message, :encryption, :decryption
 
   def initialize
     @message = nil
@@ -26,13 +26,19 @@ class Enigma
 
   #Encrypt and decrypt module
   def cipher_shift(message, cipher, rotator=@rotator)
+    message = message.downcase
     translation = ""
     message.chars.each_with_index do |letter, index|
-      letter_location = rotator.index(letter)
-      shifted_rotator = rotator.rotate(cipher[index % 4])
-      translation << shifted_rotator[letter_location]
+       translation << element_conversion(letter, index, rotator, cipher)
     end
     translation
+  end
+
+  def element_conversion(letter, index, rotator, cipher)
+    return letter if !rotator.include?(letter)
+    letter_location = rotator.index(letter)
+    shifted_rotator = rotator.rotate(cipher[index % 4])
+    shifted_rotator[letter_location]
   end
 
   #decrypt method and module methods
