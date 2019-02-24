@@ -25,7 +25,7 @@ class ShiftTest < Minitest::Test
   end
 
   def test_shift_instantiation_creates_shift_master_hash
-    expected = {"A"=>3, "B"=>27, "C"=>73, "D"=>20}
+    expected = [3, 27, 73, 20]
 
     assert_equal expected, @shift.shift_master
   end

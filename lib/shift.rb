@@ -5,7 +5,7 @@ class Shift < Enigma
   attr_reader :shift_master
 
   def initialize(key_master:, offset_master:)
-    @shift_master = Hash.new
+    @shift_master = []
     assign_shift_letters(key_master, offset_master)
   end
 
@@ -14,7 +14,7 @@ class Shift < Enigma
     key_values = key_master_converter(key_master)
     shift_keys = [*'A'..'D']
     shift_keys.each_with_index do |key,index|
-      @shift_master[key] = key_values[index].to_i + offset_values[index].to_i
+      @shift_master << key_values[index].to_i + offset_values[index].to_i
     end
   end
 
