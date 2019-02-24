@@ -29,33 +29,39 @@ class Enigma
   end
 
   def command_encrypt(input=ARGV)
-    message_file = read_in_message(input)
+    message_file = read_in_file(input)
 
-    file_path = './data/' + input[1]
-    encrypt_key = sampler()
-    encrypt_file(file_path, message_file, encrypt_key)
+    encrypt_file(message_file, input)
 
-    p "Created '#{input[1]}' with the key #{encrypt_key} and date #{encrypt("")[:date]}"
+    p "Created '#{input[1]}' with the key #{input[2]} and date #{input[3]}"
   end
 
-  def read_in_message(input_array)
+  def read_in_file(input_array)
     file_path = './data/' + input_array[0]
-    message_file = File.readlines(file_path)
-    message_file = message_file.map { |line| line.chomp }
+    file = File.readlines(file_path)
+    file = file.map { |line| line.chomp }
   end
 
-  def encrypt_file(file_path, message_file, encrypt_key)
-    encryption_file = File.open(file_path, 'w')
-    encryption_file.close
-    encrypt_each_line(message_file, file_path, encrypt_key)
-  end
-
-  def encrypt_each_line(message_file, file_path, encrypt_key)
+  def encrypt_file(message_file, input)
+    key = sampler()
+    key = input[2]; date = input[3] if input.length > 2
+    file_name = input[1]
+    encryption_file_path = create_file(file_name)
     message_file.each do |line|
-      encryption_file = File.open(file_path, 'a')
-      encryption_file.puts(encrypt(line, encrypt_key)[:encryption])
-      encryption_file.close
+      encrypt_line(line, encryption_file_path, key, date)
     end
   end
 
+  def encrypt_line(line, encryption_file_path, key, date)
+    encryption_file = File.open(encryption_file_path, 'a')
+    encryption_file.puts(encrypt(line, key, date)[:encryption])
+    encryption_file.close
+  end
+
+  def create_file(file_name)
+    file_location = './data/' + file_name
+    file = File.open(file_location, 'w')
+    file.close
+    file_location = './data/' + file_name
+  end
 end
