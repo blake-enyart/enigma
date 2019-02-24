@@ -101,8 +101,8 @@ class EnigmaTest < Minitest::Test
     input_array = [input_1, input_2]
     enigma = Enigma.new
 
-    expected = "Created 'encrypted.txt' with the key \* and date \*"
+    expected = "Created"
 
-    assert_equal expected, enigma.command_encrypt(input_array)
+    assert_equal expected, enigma.command_encrypt(input_array)[0..6]
   end
 end
