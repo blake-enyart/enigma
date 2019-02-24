@@ -66,8 +66,10 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("keder ohulw", "02715")[:date]
   end
 
-  def test_encrypt_defaults_to_random_5_digit_key
+  def test_encrypt_defaults_to_random_5_digit_key_and_today_for_date
+    expected = Date.today.strftime('%d%m%y')
 
+    assert_equal expected, @enigma.encrypt("keder ohulw")[:date]
     assert_equal 5, @enigma.encrypt("keder ohulw")[:key].length
   end
 
@@ -83,8 +85,10 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715")[:date]
   end
 
-  def test_decrypt_defaults_to_random_5_digit_key
+  def test_decrypt_defaults_to_random_5_digit_key_and_today_for_date
+    expected = Date.today.strftime('%d%m%y')
 
+    assert_equal expected, @enigma.decrypt("keder ohulw")[:date]
     assert_equal 5, @enigma.decrypt("keder ohulw")[:key].length
   end
 end
