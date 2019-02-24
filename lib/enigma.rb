@@ -9,6 +9,7 @@ class Enigma
     @offset_master = offset_master
     @message = nil
     @encryption = nil
+    @rotator = [*'a'..'z'] << ' '
     @cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
   end
 
@@ -23,20 +24,18 @@ class Enigma
     @message=message
     @key_master=key_master
     @offset_master=offset_master
+    @encryption = cipher_shift(message, @cipher)
 
-    cipher_shift(message, @cipher)
   end
 
   #Encrypt module
-  def cipher_shift(message, cipher)
-    rotator = [*'a'..'z'] << ' '
+  def cipher_shift(message, cipher, rotator=@rotator)
     encryption = ""
     message.chars.each_with_index do |letter, index|
-      shift_master_index = index % 4
       letter_location = rotator.index(letter)
-      shifted_rotator = rotator.rotate(cipher[shift_master_index])
+      shifted_rotator = rotator.rotate(cipher[index % 4])
       encryption << shifted_rotator[letter_location]
     end
-    @encryption = encryption
+    encryption
   end
 end
