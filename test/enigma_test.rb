@@ -110,12 +110,20 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_command_decrypt_decrypts_message_correctly
+    input_1 = 'message.txt'
+    input_2 = 'encrypted.txt'
+    key = "02715"
+    date = "040895"
+    input_array = [input_1, input_2, key, date]
+    enigma = Enigma.new
+
+    enigma.command_encrypt(input_array)
+
     input_1 = 'encrypted.txt'
     input_2 = 'decrypted.txt'
     key = "02715"
     date = "040895"
     input_array = [input_1, input_2, key, date]
-    enigma = Enigma.new
 
     enigma.command_decrypt(input_array)
     expected = "hello world,\n"
