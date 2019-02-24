@@ -91,4 +91,9 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.decrypt("keder ohulw")[:date]
     assert_equal 5, @enigma.decrypt("keder ohulw")[:key].length
   end
+
+  def test_cipher_shift_returns_special_characters_untouched
+
+    assert_equal '@!:', @enigma.encrypt('@!:')
+  end
 end
