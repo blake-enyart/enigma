@@ -77,4 +77,9 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715")[:date]
   end
+
+  def test_decrypt_defaults_to_random_5_digit_key
+
+    assert_equal 5, @enigma.decrypt("keder ohulw")[:key].length
+  end
 end
