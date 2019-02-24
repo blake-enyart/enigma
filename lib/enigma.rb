@@ -29,15 +29,16 @@ class Enigma
     message = message.downcase
     translation = ""
     message.chars.each_with_index do |letter, index|
-      if !rotator.include?(letter)
-        translation << letter
-        next
-      end
-      letter_location = rotator.index(letter)
-      shifted_rotator = rotator.rotate(cipher[index % 4])
-      translation << shifted_rotator[letter_location]
+       translation << element_conversion(letter, index, rotator, cipher)
     end
     translation
+  end
+
+  def element_conversion(letter, index, rotator, cipher)
+    return letter if !rotator.include?(letter)
+    letter_location = rotator.index(letter)
+    shifted_rotator = rotator.rotate(cipher[index % 4])
+    shifted_rotator[letter_location]
   end
 
   #decrypt method and module methods
