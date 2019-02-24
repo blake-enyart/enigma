@@ -40,7 +40,7 @@ class Enigma
     encryption_file.close
     message_file.each do |line|
       encryption_file = File.open(file_path, 'a')
-      encryption_file.write(encrypt(line, encrypt_key)[:encryption])
+      encryption_file.puts(encrypt(line, encrypt_key)[:encryption])
       encryption_file.close
     end
 
