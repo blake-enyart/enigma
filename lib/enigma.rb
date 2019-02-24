@@ -30,12 +30,13 @@ class Enigma
   #Encrypt module
   def cipher_shift(message, cipher)
     rotator = [*'a'..'z'] << ' '
+    encryption = ""
     message.chars.each_with_index do |letter, index|
-      if index
+      shift_master_index = index % 4
       letter_location = rotator.index(letter)
-      shifted_rotator = rotator.rotate(cipher['A'])
-      shifted_rotator[letter_location]
-      binding.pry
+      shifted_rotator = rotator.rotate(cipher[shift_master_index])
+      encryption << shifted_rotator[letter_location]
     end
+    @encryption = encryption
   end
 end
