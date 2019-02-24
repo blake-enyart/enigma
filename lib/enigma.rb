@@ -7,6 +7,7 @@ class Enigma
   def initialize
     @message = nil
     @encryption = nil
+    @decryption = nil
     @rotator = [*'a'..'z'] << ' '
   end
 
@@ -25,18 +26,21 @@ class Enigma
 
   #Encrypt module
   def cipher_shift(message, cipher, rotator=@rotator)
-    encryption = ""
+    translation = ""
     message.chars.each_with_index do |letter, index|
       letter_location = rotator.index(letter)
       shifted_rotator = rotator.rotate(cipher[index % 4])
-      encryption << shifted_rotator[letter_location]
+      translation << shifted_rotator[letter_location]
     end
-    encryption
+    translation
   end
 
   #decrypt method and module methods
   def decrypt(encryption, key_master=sampler(), offset_master=Date.today.strftime('%d%m%y'))
-    cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
-
+    decrypt_cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
+    decrypt_cipher = decrypt_cipher.map { |shift_key| -shift_key }
+    @encryption = encryption
+    @decryption=cipher_shift(encryption, decrypt_cipher)
+    { decryption: @decryption, key: key_master, date: offset_master }
   end
 end
