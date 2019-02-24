@@ -1,5 +1,3 @@
-require './lib/class_helper'
-
 class Enigma
 
   attr_reader :message, :encryption, :decryption
