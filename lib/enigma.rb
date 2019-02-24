@@ -29,22 +29,33 @@ class Enigma
   end
 
   def command_encrypt(input=ARGV)
-    input_array = input
+    message_file = read_in_message(input)
+
+    file_path = './data/' + input[1]
+    encrypt_key = sampler()
+    encrypt_file(file_path, message_file, encrypt_key)
+
+    p "Created '#{input[1]}' with the key #{encrypt_key} and date #{encrypt("")[:date]}"
+  end
+
+  def read_in_message(input_array)
     file_path = './data/' + input_array[0]
     message_file = File.readlines(file_path)
     message_file = message_file.map { |line| line.chomp }
+  end
 
-    file_path = './data/' + input_array[1]
-    encrypt_key = sampler()
+  def encrypt_file(file_path, message_file, encrypt_key)
     encryption_file = File.open(file_path, 'w')
     encryption_file.close
+    encrypt_each_line(message_file, file_path, encrypt_key)
+  end
+
+  def encrypt_each_line(message_file, file_path, encrypt_key)
     message_file.each do |line|
       encryption_file = File.open(file_path, 'a')
       encryption_file.puts(encrypt(line, encrypt_key)[:encryption])
       encryption_file.close
     end
-
-    p "Created '#{input_array[1]}' with the key #{encrypt_key} and date #{encrypt("")[:date]}"
   end
 
 end
