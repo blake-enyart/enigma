@@ -20,6 +20,7 @@ module CommandEncrypt
     encryption_file = File.open(encryption_file_path, 'a')
     encryption_file.puts(encrypt(line, key, date)[:encryption])
     encryption_file.close
+    encrypt(line, key, date)[:encryption]
   end
 
   def input_filter(input)
