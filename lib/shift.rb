@@ -1,5 +1,3 @@
-require './lib/class_helper'
-
 class Shift < Enigma
 
   attr_reader :shift_master
