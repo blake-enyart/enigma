@@ -30,8 +30,8 @@ class Enigma
 
   def command_encrypt(input=ARGV)
     message_file = read_in_file(input)
-    encrypt_file(message_file, input)
-    p "Created '#{input[1]}' with the key #{input[2]} and date #{input[3]}"
+    file_name, key, date = encrypt_file(message_file, input)
+    p "Created '#{file_name}' with the key #{key} and date #{date}"
   end
 
   def read_in_file(input_array)
@@ -46,6 +46,7 @@ class Enigma
     message_file.each do |line|
       encrypt_line(line, encryption_file_path, key, date)
     end
+    [file_name, key, date]
   end
 
   def input_filter(input)
