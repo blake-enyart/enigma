@@ -66,6 +66,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("keder ohulw", "02715")[:date]
   end
 
+  def test_encrypt_defaults_to_random_5_digit_key
+
+    assert_equal 5, @enigma.encrypt("keder ohulw")[:key].length
+  end
+
   def test_decrypt_returns_correctly
     expected = { decryption: "hello world", key: "02715", date: "040895" }
 
