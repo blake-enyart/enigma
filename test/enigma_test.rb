@@ -30,20 +30,13 @@ class EnigmaTest < Minitest::Test
     assert_equal 5, @enigma.key_master.length
   end
 
-  def test_ivar_change_with_encrypt_method
+  def test_message_ivar_change_with_encrypt_method
 
     assert_nil @enigma.message
-
-    expected = Date.today.strftime('%d%m%y')
-
-    assert_equal expected, @enigma.offset_master
-    assert_equal 5, @enigma.key_master.length
 
     @enigma.encrypt("hello world", "02715", "040895")
 
     assert_equal "hello world", @enigma.message
-    assert_equal "02715", @enigma.key_master
-    assert_equal "040895", @enigma.offset_master
   end
 
   def test_cipher_application_returns_correctly
