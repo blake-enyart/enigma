@@ -28,6 +28,10 @@ class Enigma
   def cipher_shift(message, cipher, rotator=@rotator)
     translation = ""
     message.chars.each_with_index do |letter, index|
+      if !rotator.include?(letter)
+        translation << letter
+        next
+      end
       letter_location = rotator.index(letter)
       shifted_rotator = rotator.rotate(cipher[index % 4])
       translation << shifted_rotator[letter_location]
