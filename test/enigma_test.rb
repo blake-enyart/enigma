@@ -99,4 +99,11 @@ class EnigmaTest < Minitest::Test
 
     assert_equal 'hello world!', @enigma.decrypt('KEDER OHULW!', "02715", "040895" )[:decryption]
   end
+
+  def test_sampler_returns_5_digit_string_in_range
+    choices = [*00001..99999]
+    choices = choices.map { |number| "%05d" % number }
+
+    assert_equal true, choices.include?(@enigma.sampler)
+  end
 end
