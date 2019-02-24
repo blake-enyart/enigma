@@ -40,4 +40,13 @@ class CommandEncryptTest < Minitest::Test
     assert 5, @enigma.encrypt_file(message_file, encrypt_file_path, input_array)[0].length
     assert_equal expected, @enigma.encrypt_file(message_file, encrypt_file_path, input_array)[1]
   end
+
+  def test_encrypt_line_returns_correctly
+    line = 'hello world,'
+    decrypt_location = './data/encrypted.txt'
+    key = "02715"
+    date = "040895"
+
+    assert_equal 'keder ohulw,', @enigma.encrypt_line(line, decrypt_location, key, date)
+  end
 end
