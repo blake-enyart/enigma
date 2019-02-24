@@ -95,5 +95,6 @@ class EnigmaTest < Minitest::Test
   def test_cipher_shift_returns_special_characters_untouched
 
     assert_equal '@!:', @enigma.encrypt('@!:')[:encryption]
+    assert_equal 'keder ohulw!', @enigma.encrypt('hello world!', "02715", "040895" )[:encryption]
   end
 end
