@@ -49,12 +49,17 @@ class EnigmaTest < Minitest::Test
   def test_cipher_application_returns_correctly
     enigma = Enigma.new
     enigma.encrypt("hello world", "02715", "040895")
-    
+
     assert_equal "keder ohulw", enigma.encryption
   end
 
+  def test_cipher_shift_returns_correctly
+    enigma = Enigma.new(offset_master: "040895", key_master: "02715")
+
+    assert_equal "keder ohulw", enigma.cipher_shift("hello world")
+  end
+
   def test_encrypt_returns_correctly
-    skip
     expected = { encryption: "keder ohulw", key: "02715", date: "040895" }
 
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
