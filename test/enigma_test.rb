@@ -12,31 +12,9 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_attr_return_correctly
-
-    assert_nil @enigma.message
-    assert_nil @enigma.encryption
-    assert_nil @enigma.decryption
-
     expected = [*'a'..'z'] << ' '
 
     assert_equal expected, @enigma.rotator
-  end
-
-  def test_message_and_encryption_ivars_change_with_encrypt_method
-
-    assert_nil @enigma.message
-    assert_nil @enigma.encryption
-
-    @enigma.encrypt("hello world", "02715", "040895")
-
-    assert_equal "hello world", @enigma.message
-    assert @enigma.encryption
-  end
-
-  def test_cipher_application_returns_correctly
-    @enigma.encrypt("hello world", "02715", "040895")
-
-    assert_equal "keder ohulw", @enigma.encryption
   end
 
   def test_encrypt_returns_correctly
