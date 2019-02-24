@@ -46,6 +46,13 @@ class EnigmaTest < Minitest::Test
     assert_equal "040895", @enigma.offset_master
   end
 
+  def test_cipher_application_returns_correctly
+    enigma = Enigma.new
+    enigma.encrypt("hello world", "02715", "040895")
+    
+    assert_equal "keder ohulw", enigma.encryption
+  end
+
   def test_encrypt_returns_correctly
     skip
     expected = { encryption: "keder ohulw", key: "02715", date: "040895" }
