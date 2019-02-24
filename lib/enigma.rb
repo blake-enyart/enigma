@@ -24,12 +24,12 @@ class Enigma
     @message=message
     @key_master=key_master
     @offset_master=offset_master
-    @encryption = cipher_shift(message, @cipher)
-
+    @encryption = cipher_shift(message)
+    { encryption: @encryption, key: @key_master, date: @offset_master }
   end
 
   #Encrypt module
-  def cipher_shift(message, cipher, rotator=@rotator)
+  def cipher_shift(message, cipher=@cipher, rotator=@rotator)
     encryption = ""
     message.chars.each_with_index do |letter, index|
       letter_location = rotator.index(letter)
