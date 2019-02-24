@@ -95,7 +95,7 @@ class EnigmaTest < Minitest::Test
     assert_equal 'hello world!', @enigma.decrypt('KEDER OHULW!', "02715", "040895" )[:decryption]
   end
 
-  def test_command_line_encrypt_accepts_argument
+  def test_command_encrypt_encrypts_message_correctly
     input_1 = 'message.txt'
     input_2 = 'encrypted.txt'
     key = "02715"
