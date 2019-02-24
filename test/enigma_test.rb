@@ -55,8 +55,9 @@ class EnigmaTest < Minitest::Test
 
   def test_cipher_shift_returns_correctly
     enigma = Enigma.new(offset_master: "040895", key_master: "02715")
+    cipher = Shift.new(key_master: enigma.key_master, offset_master: enigma.offset_master).shift_master
 
-    assert_equal "keder ohulw", enigma.cipher_shift("hello world")
+    assert_equal "keder ohulw", enigma.cipher_shift("hello world", cipher)
   end
 
   def test_encrypt_returns_correctly
