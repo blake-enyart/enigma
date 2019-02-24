@@ -2,7 +2,7 @@ require './lib/class_helper'
 
 class Enigma
 
-  attr_reader :message, :key_master, :offset_master, :cipher, :encryption
+  attr_reader :message, :encryption, :decryption
 
   def initialize
     @message = nil
