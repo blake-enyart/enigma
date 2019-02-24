@@ -24,7 +24,7 @@ class Enigma
     { encryption: @encryption, key: key_master, date: offset_master }
   end
 
-  #Encrypt module
+  #Encrypt and decrypt module
   def cipher_shift(message, cipher, rotator=@rotator)
     translation = ""
     message.chars.each_with_index do |letter, index|
