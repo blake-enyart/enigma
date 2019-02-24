@@ -14,21 +14,22 @@ class EnigmaTest < Minitest::Test
   def test_attr_return_correctly
 
     assert_nil @enigma.message
+    assert_nil @enigma.encryption
 
-    assert_equal 6, @enigma.offset_master.length
-    assert_equal 5, @enigma.key_master.length
+    # assert_equal 6, @enigma.offset_master.length
+    # assert_equal 5, @enigma.key_master.length
   end
 
-  def test_enigma_defaults_to_today_for_offset_master
-    expected = Date.today.strftime('%d%m%y')
+  # def test_enigma_defaults_to_today_for_offset_master
+  #   expected = Date.today.strftime('%d%m%y')
+  #
+  #   assert_equal expected, @enigma.offset_master
+  # end
 
-    assert_equal expected, @enigma.offset_master
-  end
-
-  def test_enigma_defaults_to_5_digit_random_number_for_key_master
-
-    assert_equal 5, @enigma.key_master.length
-  end
+  # def test_enigma_defaults_to_5_digit_random_number_for_key_master
+  #
+  #   assert_equal 5, @enigma.key_master.length
+  # end
 
   def test_message_ivar_change_with_encrypt_method
 
@@ -47,8 +48,8 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_cipher_shift_returns_correctly
-    enigma = Enigma.new(offset_master: "040895", key_master: "02715")
-    cipher = Shift.new(key_master: enigma.key_master, offset_master: enigma.offset_master).shift_master
+    enigma = Enigma.new
+    cipher = Shift.new(key_master: "02715", offset_master: "040895").shift_master
 
     assert_equal "keder ohulw", enigma.cipher_shift("hello world", cipher)
   end

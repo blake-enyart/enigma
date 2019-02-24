@@ -4,13 +4,10 @@ class Enigma
 
   attr_reader :message, :key_master, :offset_master, :cipher, :encryption
 
-  def initialize(offset_master: Date.today.strftime('%d%m%y'), key_master: sampler())
-    @key_master = key_master
-    @offset_master = offset_master
+  def initialize
     @message = nil
     @encryption = nil
     @rotator = [*'a'..'z'] << ' '
-    @cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
   end
 
   def sampler
@@ -19,17 +16,15 @@ class Enigma
     key_master = "%05d" % key_master
   end
 
-  def encrypt(message, key_master=@key_master, offset_master=@offset_master)
-    @cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
+  def encrypt(message, key_master=sampler(), offset_master=Date.today.strftime('%d%m%y'))
+    cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
     @message=message
-    @key_master=key_master
-    @offset_master=offset_master
-    @encryption = cipher_shift(message)
-    { encryption: @encryption, key: @key_master, date: @offset_master }
+    @encryption = cipher_shift(message, cipher)
+    { encryption: @encryption, key: key_master, date: offset_master }
   end
 
   #Encrypt module
-  def cipher_shift(message, cipher=@cipher, rotator=@rotator)
+  def cipher_shift(message, cipher, rotator=@rotator)
     encryption = ""
     message.chars.each_with_index do |letter, index|
       letter_location = rotator.index(letter)
@@ -37,5 +32,11 @@ class Enigma
       encryption << shifted_rotator[letter_location]
     end
     encryption
+  end
+
+  #decrypt method and module methods
+  def decrypt(encryption, key_master=sampler(), offset_master=Date.today.strftime('%d%m%y'))
+    cipher = Shift.new(key_master: key_master, offset_master: offset_master).shift_master
+
   end
 end
