@@ -122,4 +122,18 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, File.readlines('./data/decrypted.txt')[0]
   end
+
+  def test_command_encrypt_default_to_todays_date_and_random_key
+    input_1 = 'encrypted.txt'
+    input_2 = 'decrypted.txt'
+    key = "02715"
+    date = "040895"
+    input_array = [input_1, input_2, key, date]
+    enigma = Enigma.new
+
+    enigma.command_decrypt(input_array)
+    expected = "hello world,\n"
+
+    assert_equal expected, File.readlines('./data/decrypted.txt')[0]
+  end
 end
