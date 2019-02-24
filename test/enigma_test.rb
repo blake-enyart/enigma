@@ -93,4 +93,11 @@ class EnigmaTest < Minitest::Test
     assert_equal 'hello world!', @enigma.decrypt('KEDER OHULW!', "02715", "040895" )[:decryption]
   end
 
+  def test_decrypt_reverses_encrypt_with_default_day_and_key_provided
+    encrypted = @enigma.encrypt("hello world", "02715")
+    expected = 'hello world'
+
+    assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")[:decryption]
+  end
+
 end
