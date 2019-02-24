@@ -65,4 +65,10 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
+
+  def test_decrypt_defaults_date_to_today
+    expected = Date.today.strftime('%d%m%y')
+
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715")[:date]
+  end
 end
