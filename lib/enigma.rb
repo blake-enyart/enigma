@@ -26,6 +26,7 @@ class Enigma
 
   #Encrypt and decrypt module
   def cipher_shift(message, cipher, rotator=@rotator)
+    message = message.downcase
     translation = ""
     message.chars.each_with_index do |letter, index|
       if !rotator.include?(letter)
