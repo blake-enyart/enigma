@@ -27,4 +27,24 @@ class Enigma
     @decryption=cipher_shift(encryption, decrypt_cipher)
     { decryption: @decryption, key: key_master, date: offset_master }
   end
+
+  def command_encrypt(input=ARGV)
+    input_array = input
+    file_path = './data/' + input_array[0]
+    message_file = File.readlines(file_path)
+    message_file = message_file.map { |line| line.chomp }
+
+    file_path = './data/' + input_array[1]
+    encrypt_key = sampler()
+    encryption_file = File.open(file_path, 'w')
+    encryption_file.close
+    message_file.each do |line|
+      encryption_file = File.open(file_path, 'a')
+      encryption_file.write(encrypt(line, encrypt_key)[:encryption])
+      encryption_file.close
+    end
+
+    p "Created '#{input_array[1]}' with the key #{encrypt_key} and date #{encrypt("")[:date]}"
+  end
+
 end
