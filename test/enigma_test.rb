@@ -98,11 +98,14 @@ class EnigmaTest < Minitest::Test
   def test_command_line_encrypt_accepts_argument
     input_1 = 'message.txt'
     input_2 = 'encrypted.txt'
-    input_array = [input_1, input_2]
+    key = "02715"
+    date = "040895"
+    input_array = [input_1, input_2, key, date]
     enigma = Enigma.new
 
-    expected = "Created"
+    enigma.command_encrypt(input_array)
+    expected = "keder ohulw,\n"
 
-    assert_equal expected, enigma.command_encrypt(input_array)[0..6]
+    assert_equal expected, File.readlines('./data/encrypted.txt')[0]
   end
 end
