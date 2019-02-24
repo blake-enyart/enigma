@@ -15,21 +15,7 @@ class EnigmaTest < Minitest::Test
 
     assert_nil @enigma.message
     assert_nil @enigma.encryption
-
-    # assert_equal 6, @enigma.offset_master.length
-    # assert_equal 5, @enigma.key_master.length
   end
-
-  # def test_enigma_defaults_to_today_for_offset_master
-  #   expected = Date.today.strftime('%d%m%y')
-  #
-  #   assert_equal expected, @enigma.offset_master
-  # end
-
-  # def test_enigma_defaults_to_5_digit_random_number_for_key_master
-  #
-  #   assert_equal 5, @enigma.key_master.length
-  # end
 
   def test_message_ivar_change_with_encrypt_method
 
