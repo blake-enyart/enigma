@@ -91,12 +91,7 @@ class EnigmaTest < Minitest::Test
 
   def test_decrypt_returns_special_characters_untouched
 
-    assert_equal '@!:', @enigma.decrypt('@!:')[:encryption]
-    assert_equal 'hello world!', @enigma.decrypt('keder ohulw!', "02715", "040895" )[:encryption]
-  end
-
-  def test_encrypt_handles_uppercase_letters_correctly
-
-    assert_equal 'hello world!', @enigma.encrypt('keder ohulw!', "02715", "040895" )[:encryption]
+    assert_equal '@!:', @enigma.decrypt('@!:')[:decryption]
+    assert_equal 'hello world!', @enigma.decrypt('keder ohulw!', "02715", "040895" )[:decryption]
   end
 end
