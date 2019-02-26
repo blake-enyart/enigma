@@ -25,12 +25,12 @@ class CommandDecryptTest < Minitest::Test
     enigma.command_decrypt(input_array)
     expected = "hello world,\n"
 
-    assert_equal expected, File.readlines('./data/decrypted.txt')[0]
+    assert_equal expected, File.readlines('decrypted.txt')[0]
   end
 
   def test_decrypt_line_returns_correctly
     line = 'keder ohulw,'
-    decrypt_location = './data/decrypted.txt'
+    decrypt_location = 'decrypted.txt'
     key = "02715"
     date = "040895"
 

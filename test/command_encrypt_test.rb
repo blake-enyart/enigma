@@ -17,7 +17,7 @@ class CommandEncryptTest < Minitest::Test
     enigma.command_encrypt(input_array)
     expected = "keder ohulw,\n"
 
-    assert_equal expected, File.readlines('./data/encrypted.txt')[0]
+    assert_equal expected, File.readlines('encrypted.txt')[0]
   end
 
   def test_command_encrypt_defaults_key_and_date_arguments
@@ -43,7 +43,7 @@ class CommandEncryptTest < Minitest::Test
 
   def test_encrypt_line_returns_correctly
     line = 'hello world,'
-    decrypt_location = './data/encrypted.txt'
+    decrypt_location = 'encrypted.txt'
     key = "02715"
     date = "040895"
 
